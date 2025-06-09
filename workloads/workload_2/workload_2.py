@@ -6,7 +6,7 @@ class Workload:
         pass
 
     def generate_random(self):
-        """Picks a random integer from a range of integers."""
+        """Picks a random letter from the alphabet."""
         pass
 
     def run(self):
