@@ -1,4 +1,19 @@
+"""This module contains functions for Workload_2.
+
+Typical usage example:
+
+  wl = Workload()
+  wl.run(
+      seed=123,
+      bin_path=".../bins/workload_2/wl_2.sh",
+      stdout_path=".../var/log/workload_runner/302cca50069bbc56/workload_2_1_04102025_141638.out",
+      stderr_path=".../var/log/workload_runner/302cca50069bbc56/workload_2_1_04102025_141638.err",
+  )
+"""
+
 import numpy as np
+import string
+import subprocess
 
 
 class Workload:
@@ -23,10 +38,42 @@ class Workload:
         self.number = rng.integers(low=low, high=high, size=1)
         return self.number[0]
 
-    def run(self):
-        """Runs the workload."""
-        pass
+    def run(self, seed: int, bin_path: str, stdout_path: str, stderr_path: str):
+        """Runs the workload.
 
-    def process_output(self):
-        """Process the test output to determine whether the test passed or failed."""
-        pass
+        Args:
+            seed: The input seed for the bit generator.
+            bin_path: The absolute path to the workload's executable.
+            stdout_path: The absolute path to the stdout log file.
+            stderr_path: The absolute path to the stderr log file.
+
+        Returns:
+            The random letter.
+        """
+        self.letters = string.ascii_lowercase
+        self.index = self.generate_random(low=0, high=25, seed=seed)
+        self.letter = self.letters[self.index]
+        with open(stdout_path, "a") as stdout_file, open(
+            stderr_path, "a"
+        ) as stderr_file:
+            subprocess.run(
+                ["sh", bin_path, "-n", self.letter],
+                stdout=stdout_file,
+                stderr=stderr_file,
+            )
+
+    def process_output(self, stdout_path: str) -> bool:
+        """Process the test output to determine whether the test passed or failed.
+
+        Args:
+            stdout_path: The absolute path to the stdout log file.
+
+        Returns:
+            Whether the test passed or failed.
+        """
+        regex_pattern = "The letter picked is :"
+        with open(stdout_path, "r") as stdout_file:
+            content = stdout_file.read()
+        if regex_pattern not in content:
+            return False
+        return True
