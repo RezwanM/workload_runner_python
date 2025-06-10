@@ -30,7 +30,7 @@ class Parallel:
         pass
 
     def start_process(self, func):
-        """Add a process to run in parallel.
+        """Adds a process to run in parallel.
 
         Args:
             func: A function/method/process to be run in parallel.
@@ -41,6 +41,6 @@ class Parallel:
         self.process_list.append(p)
 
     def wait(self):
-        """Wait for all the parallel processes to finish running."""
+        """Waits for all the parallel processes to finish running."""
         for p in self.process_list:
             p.join()

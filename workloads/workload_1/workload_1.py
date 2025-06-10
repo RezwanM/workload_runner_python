@@ -58,7 +58,7 @@ class Workload:
             )
 
     def process_output(self, stdout_path: str) -> bool:
-        """Process the test output to determine whether the test passed or failed.
+        """Processes the test output to determine whether the test passed or failed.
 
         Args:
             stdout_path: The absolute path to the stdout log file.

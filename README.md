@@ -59,11 +59,11 @@ The goal of this project was to create a validation tool that can automatically 
 
 ## Examples
 
-### Running *Workload_1* with a random seed for a single itertion (default)
+### Running *Workload_1* with a random seed for a single iteration (default)
 
     python3 ./main.py -wl Workload_1
 
-### Running *Workload_1* with a random seed for 3 itertions
+### Running *Workload_1* with a random seed for 3 iterations
 
     python3 ./main.py -wl Workload_1 -iter 3
 

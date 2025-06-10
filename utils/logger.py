@@ -38,12 +38,12 @@ class Logger:
         self.dir_path = Paths().dir_path
 
     def make_log_dir(self):
-        """Create the regression log directory for the regression run."""
+        """Creates the regression log directory for the regression run."""
         if not os.path.exists(self.dir_path):
             os.makedirs(self.dir_path)
 
     def make_log_subdir(self, seed: int) -> str:
-        """Create the regression log subdirectory for the current iteration.
+        """Creates the regression log subdirectory for the current iteration.
 
         Args:
             seed: The iteration seed.
@@ -59,7 +59,7 @@ class Logger:
     def touch_log_files(
         self, seed: int, workload: str, current_iter: int
     ) -> Tuple[str, str]:
-        """Create the regression log files (standard output and standard error) for the current iteration.
+        """Creates the regression log files (standard output and standard error) for the current iteration.
 
         Args:
             seed: The iteration seed.
@@ -76,7 +76,7 @@ class Logger:
         return str(Path(subdir_path, paths[0])), str(Path(subdir_path, paths[1]))
 
     def set_color(self, text: str, color: str) -> str:
-        """Change the color of an input text by padding ANSI codes.
+        """Changes the color of an input text by padding ANSI codes.
 
         Args:
             text: The input text.
@@ -98,11 +98,11 @@ class Logger:
         return colored_text
 
     def print_separator(self):
-        """Print a separator line."""
+        """Prints a separator line."""
         print("#" * self.term_size)
 
     def print_to_terminal(self, text: str, fancy: bool = False, color: str = "default"):
-        """Print an input text on the terminal (i.e., standard output).
+        """Prints an input text on the terminal (i.e., standard output).
 
         Args:
             text: The input text.
@@ -118,7 +118,7 @@ class Logger:
         print(text.center(text_width).center(self.term_size + pad_len, char))
 
     def run_pre_exec(self, wl_list: List[str], is_iter: bool, is_random: bool):
-        """Run the pre-execution stage functions.
+        """Runs the pre-execution stage functions.
 
         Args:
             wl_list: The list of workloads to be run in the regression test.
@@ -133,7 +133,7 @@ class Logger:
     def run_exec(
         self, seed: int, workload: str, current_iter: int
     ) -> Tuple[str, Tuple[str, str]]:
-        """Run the execution stage functions.
+        """Runs the execution stage functions.
 
         Args:
             seed: An input seed.
@@ -152,7 +152,7 @@ class Logger:
     def run_post_exec(
         self, is_pass: bool, log_paths: Tuple[str, str], attribute: str, iter_id: int
     ) -> int:
-        """Run the post-execution stage functions.
+        """Runs the post-execution stage functions.
 
         Args:
             is_pass: Whether the test passed.
@@ -179,7 +179,7 @@ class Logger:
     def print_summary(
         self, pass_count: int, task_count: int, total_iter: int, total_time: float
     ):
-        """Print the final summary of the entire regression run.
+        """Prints the final summary of the entire regression run.
 
         Args:
             pass_count: The number of tests that passed.
@@ -201,7 +201,7 @@ class Logger:
         self.print_separator()
 
     def print_banner(self):
-        """Print the banner for Workload-Runner at the beginning of the regression run."""
+        """Prints the banner for Workload-Runner at the beginning of the regression run."""
         self.print_separator()
         self.print_to_terminal(
             "W o r k l o a d - R u n n e r", fancy=True, color="cyan"
@@ -216,7 +216,7 @@ class Logger:
         time.sleep(2)
 
     def print_wl(self, wl_list: List[str]):
-        """Print the list of workloads selected for the regression run.
+        """Prints the list of workloads selected for the regression run.
 
         Args:
             wl_list: The list of workloads.
@@ -226,7 +226,7 @@ class Logger:
             time.sleep(2)
 
     def print_run_config(self, is_iter: bool, is_random: bool):
-        """Print the run configuration selected for the regression run.
+        """Prints the run configuration selected for the regression run.
 
         Args:
             is_iter: Whether the regression run is based on input iterations.
@@ -244,7 +244,7 @@ class Logger:
         time.sleep(2)
 
     def print_iter(self, current_iter: int, total_iter: int, seed: int):
-        """Print the seed and iteration ID for each iteration.
+        """Prints the seed and iteration ID for each iteration.
 
         Args:
             current_iter: The current iteration ID.
@@ -256,7 +256,7 @@ class Logger:
         self.print_to_terminal(f"Iteration {current_iter} of {total_iter}")
 
     def print_time(self, time_left: float, total_time: float, seed: int):
-        """Print the seed and remaining runtime for each iteration.
+        """Prints the seed and remaining runtime for each iteration.
 
         Args:
             time_left: The time remaining till runtime ends.
@@ -277,11 +277,11 @@ class Logger:
             )
 
     def print_error(self, text: str):
-        """Print an error message on the terminal (i.e., standard output)."""
+        """Prints an error message on the terminal (i.e., standard output)."""
         self.print_to_terminal(text=text.upper(), color="red")
 
     def print_debug(self, text: str):
-        """Print a debug message on the terminal (i.e., standard output)."""
+        """Prints a debug message on the terminal (i.e., standard output)."""
         module_name = inspect.stack()[1].filename
         line_number = inspect.stack()[1].lineno
         self.print_to_terminal(
@@ -290,7 +290,7 @@ class Logger:
         )
 
     def get_subdir(self, seed: int) -> str:
-        """Get the name of the log subdirectory for the current iteration.
+        """Gets the name of the log subdirectory for the current iteration.
 
         Args:
             seed: The iteration seed.
@@ -304,7 +304,7 @@ class Logger:
         return subdir_name
 
     def get_filenames(self, workload: str, current_iter: int) -> Tuple[str, str]:
-        """Get the name of the log files (standard output and standard error) for the current iteration.
+        """Gets the name of the log files (standard output and standard error) for the current iteration.
 
         Args:
             workload: The workload for which to create the log files.

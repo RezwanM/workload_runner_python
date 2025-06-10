@@ -37,7 +37,7 @@ class Paths:
         )
 
     def get_wl_module(self, workload: str) -> str:
-        """Create the string for referencing a workload module.
+        """Creates the string for referencing a workload module.
 
         Args:
             workload: The workload for which to create the module reference string.
@@ -49,7 +49,7 @@ class Paths:
         return ".".join(module_tup).lower()
 
     def get_wl_config(self, workload: str) -> str:
-        """Create the string for referencing a workload's run configuration module.
+        """Creates the string for referencing a workload's run configuration module.
 
         Args:
             workload: The workload for which to create the module reference string.
