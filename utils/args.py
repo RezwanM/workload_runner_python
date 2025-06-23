@@ -18,11 +18,11 @@ class Args:
         """Initializes an instance from the Args class."""
         pass
 
-    def parse_arguments(self):
-        """Parses a set of input arguments.
+    def get_parser(self):
+        """Get the parser for storing input arguments.
 
         Returns:
-            The parsed argument object.
+            The parser object.
         """
         parser = argparse.ArgumentParser()
         parser.add_argument(
@@ -47,8 +47,7 @@ class Args:
             "-time", "--time", type=float, help="The regression runtime (in seconds)"
         )
         parser.add_argument("-seed", "--seed", type=int, help="The input seed")
-        args = parser.parse_args()
-        return args
+        return parser
 
     def get_bool_args(self, args: argparse.Namespace) -> Dict[str:bool, str:bool]:
         """Processes a set of boolean variables based on input arguments.

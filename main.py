@@ -21,7 +21,8 @@ def main():
     paths = Paths()
     randomizer = Randomizer()
     timer = Timer()
-    args = args_parser.parse_arguments()
+    parser = args_parser.get_parser()
+    args = parser.parse_args()
     bool_args = args_parser.get_bool_args(args)
     bins_path = paths.bins_path
     wl_module = {}
