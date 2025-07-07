@@ -11,8 +11,9 @@ def arguments():
 
 
 def test_process_list(arguments):
+    parallel = Parallel()
     functions = arguments
     for func in functions:
-        Parallel().start_process(func(2))
+        parallel.start_process(func(2))
 
-    assert not Parallel().process_list == False
+    assert not parallel.process_list == False
