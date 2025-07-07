@@ -15,6 +15,7 @@ import hashlib
 import inspect
 import os
 from pathlib import Path
+import shutil
 import struct
 import time
 from typing import Tuple, List
@@ -33,7 +34,7 @@ class Logger:
 
     def __init__(self):
         """Initializes an instance from the Logger class."""
-        self.term_size = os.get_terminal_size().columns
+        self.term_size = shutil.get_terminal_size().columns
         self.hash_length = 16
         self.dir_path = Paths().dir_path
 
