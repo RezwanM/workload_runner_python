@@ -1,6 +1,4 @@
-import os
 import pytest
-import shutil
 
 from utils.parallel import Parallel
 
