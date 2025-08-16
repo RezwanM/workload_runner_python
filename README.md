@@ -74,3 +74,7 @@ The goal of this project was to create a validation tool that can automatically 
 ### Running *Workload_1* and *Workload_2* with input iterations and input seed
 
     python3 ./main.py -wl Workload_1 -wl Workload_2 -iter 5 -seed 123
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
