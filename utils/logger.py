@@ -18,7 +18,6 @@ from pathlib import Path
 import shutil
 import struct
 import time
-from typing import Tuple, List
 
 from .paths import Paths
 
@@ -59,7 +58,7 @@ class Logger:
 
     def touch_log_files(
         self, seed: int, workload: str, current_iter: int
-    ) -> Tuple[str, str]:
+    ) -> tuple[str, str]:
         """Creates the regression log files (standard output and standard error) for the current iteration.
 
         Args:
@@ -118,7 +117,7 @@ class Logger:
         text_width = len(text) + 4
         print(text.center(text_width).center(self.term_size + pad_len, char))
 
-    def run_pre_exec(self, wl_list: List[str], is_iter: bool, is_random: bool):
+    def run_pre_exec(self, wl_list: list[str], is_iter: bool, is_random: bool):
         """Runs the pre-execution stage functions.
 
         Args:
@@ -133,7 +132,7 @@ class Logger:
 
     def run_exec(
         self, seed: int, workload: str, current_iter: int
-    ) -> Tuple[str, Tuple[str, str]]:
+    ) -> tuple[str, tuple[str, str]]:
         """Runs the execution stage functions.
 
         Args:
@@ -151,7 +150,7 @@ class Logger:
         return subdir_path, log_paths
 
     def run_post_exec(
-        self, is_pass: bool, log_paths: Tuple[str, str], attribute: str, iter_id: int
+        self, is_pass: bool, log_paths: tuple[str, str], attribute: str, iter_id: int
     ) -> int:
         """Runs the post-execution stage functions.
 
@@ -216,7 +215,7 @@ class Logger:
         self.print_to_terminal("Now running...")
         time.sleep(2)
 
-    def print_wl(self, wl_list: List[str]):
+    def print_wl(self, wl_list: list[str]):
         """Prints the list of workloads selected for the regression run.
 
         Args:
@@ -304,7 +303,7 @@ class Logger:
         subdir_name = hash_object.hexdigest()[: self.hash_length]
         return subdir_name
 
-    def get_filenames(self, workload: str, current_iter: int) -> Tuple[str, str]:
+    def get_filenames(self, workload: str, current_iter: int) -> tuple[str, str]:
         """Gets the name of the log files (standard output and standard error) for the current iteration.
 
         Args:

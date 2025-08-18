@@ -4,7 +4,6 @@ Please see the README.md file for example command-lines.
 """
 
 import importlib
-from typing import Tuple
 
 from utils.args import Args
 from utils.logger import Logger
@@ -49,7 +48,7 @@ def main():
 
     def loop_execution(
         current_seed: int, iter_id: int, task_count: int, pass_count: int
-    ) -> Tuple[int, int, int, int]:
+    ) -> tuple[int, int, int, int]:
         """Execute steps for running a regression test for the given input iterations/runtime.
 
         Args:
