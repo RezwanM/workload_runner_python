@@ -96,7 +96,7 @@ def main():
                 iter_id=iter_id,
             )
             task_count += 1
-        current_seed = randomizer.generate_seed_from_seed(seed=current_seed)
+        current_seed = randomizer.pick_random_int(seed=current_seed)
         return current_seed, iter_id, task_count, pass_count
 
     if bool_args["is_iter"]:

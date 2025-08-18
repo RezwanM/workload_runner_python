@@ -16,12 +16,6 @@ def test_generate_seed(arguments):
     assert Randomizer().generate_seed()
 
 
-def test_generate_seed_from_seed(arguments):
-    low, high, seed = arguments
-
-    assert Randomizer().generate_seed_from_seed(seed=seed)
-
-
 def test_pick_random_int(arguments):
     low, high, seed = arguments
 

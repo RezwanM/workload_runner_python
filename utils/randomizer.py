@@ -34,22 +34,7 @@ class Randomizer:
         seed = np.random.choice(a=range(self.low, self.high), replace=False)
         return seed
 
-    def generate_seed_from_seed(self, seed: int) -> int:
-        """Generates a new seed from an input seed.
-
-        Args:
-            seed: The input seed.
-
-        Returns:
-            The new seed.
-        """
-        # Create a Generator object with default BitGenerator and seed
-        rng = np.random.default_rng(seed=seed)
-        # Generate a random number
-        number = rng.integers(low=self.low, high=self.high, size=1)
-        return number[0]
-
-    def pick_random_int(self, low: int, high: int, seed: int) -> int:
+    def pick_random_int(self, low: int = None, high: int = None, seed: int = None) -> int:
         """Picks a random integer from a range of integers.
 
         Args:
@@ -60,6 +45,8 @@ class Randomizer:
         Returns:
             The random integer.
         """
+        if not low and not high:
+            low, high = self.low, self.high
         # Create a Generator object with default BitGenerator and seed
         rng = np.random.default_rng(seed=seed)
         # Generate a random number
