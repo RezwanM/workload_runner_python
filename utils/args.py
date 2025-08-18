@@ -8,7 +8,6 @@ Typical usage example:
 """
 
 import argparse
-from typing import Dict
 
 
 class Args:
@@ -49,7 +48,7 @@ class Args:
         parser.add_argument("-seed", "--seed", type=int, help="The input seed")
         return parser
 
-    def get_bool_args(self, args: argparse.Namespace) -> Dict[str:bool, str:bool]:
+    def get_bool_args(self, args: argparse.Namespace) -> dict[str, bool]:
         """Processes a set of boolean variables based on input arguments.
 
         Args:
